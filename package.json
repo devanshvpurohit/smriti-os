@@ -1,10 +1,10 @@
 {
-  "name": "puter.com",
-  "version": "2.5.1",
-  "author": "Puter Technologies Inc.",
+  "name": "smriti",
+  "version": "1.0.0",
+  "author": "Smriti Project",
   "license": "AGPL-3.0-only",
-  "description": "Desktop environment in the browser!",
-  "homepage": "https://puter.com",
+  "description": "Private AI for your documents - Local-first AI knowledge operating system",
+  "homepage": "https://github.com/smriti",
   "type": "module",
   "directories": {
     "lib": "lib"
@@ -79,6 +79,6 @@
     "open": "^10.1.0"
   },
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=18.0.0"
   }
 }

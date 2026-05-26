@@ -1,136 +1,367 @@
-<h3 align="center"><img width="80" alt="Puter.com, The Personal Cloud Computer: All your files, apps, and games in one place accessible from anywhere at any time." src="https://assets.puter.site/puter-logo.png"></h3>
+<h3 align="center"><img width="80" alt="Smriti - Private AI for your documents" src="https://via.placeholder.com/80x80/1E3A8A/FFFFFF?text=S"></h3>
 
-<h3 align="center">The Open-Source Internet Computer!</h3>
+<h3 align="center">Private AI for Your Documents</h3>
 
 <p align="center">
-    <a href="https://puter.com/?ref=github.com"><strong>« LIVE DEMO »</strong></a>
+    <strong>Local-first AI Knowledge Operating System</strong>
     <br />
     <br />
-    <a href="https://puter.com/?ref=github.com">Puter.com</a>
+    <a href="#-features">Features</a>
     ·
-    <a href="https://apps.puter.com/">App Store</a>
+    <a href="#-getting-started">Getting Started</a>
     ·
-    <a href="https://developer.puter.com" target="_blank">Developers</a>
+    <a href="#-how-it-works">How It Works</a>
     ·
-    <a href="https://discord.com/invite/PQcx7Teh8u">Discord</a>
-    ·
-    <a href="https://reddit.com/r/puter">Reddit</a>
-    ·
-    <a href="https://twitter.com/HeyPuter">X</a>
+    <a href="#-documentation">Documentation</a>
 </p>
 
-<h3 align="center"><img width="800" style="border-radius:5px;" alt="screenshot" src="https://assets.puter.site/puter.com-screenshot.webp"></h3>
+<h3 align="center"><img width="800" style="border-radius:5px;" alt="Smriti Screenshot" src="https://via.placeholder.com/800x450/0F172A/E2E8F0?text=Smriti+Screenshot"></h3>
 
 <br/>
 
-## Puter
+## What is Smriti?
 
-Puter is an advanced, open-source, self-hostable internet computer designed to be feature-rich, fast, and highly extensible.
+**Smriti** (Sanskrit: स्मृति, meaning "memory") is a privacy-first AI knowledge operating system that lets you upload documents and ask questions across them using natural language with **accurate source citations**.
 
-### For Users
-Puter's goal is to provide you with every app and feature you need to work, create, and play under one roof. From a simple [Notepad](https://online-notepad.com) and [Voice Recorder](https://voice-recorder.com) to [Spreadsheet](https://apps.puter.com/app/spreadsheet) and [Camera](https://online-camera.com), Puter wants to be the all-in-one solution for your digital life.
+Built on top of [Puter](https://github.com/HeyPuter/puter)'s desktop OS framework, Smriti transforms your documents into an intelligent, searchable knowledge base that runs **100% locally** on your machine.
 
+### 🎯 Core Philosophy
 
-### For Developers
+**Trust Through Traceability**
 
-Puter provides everything you need to build and publish web apps and games. From [AI](https://developer.puter.com/ai/) to [Cloud Storage](https://developer.puter.com/object-storage/) and [Database](https://developer.puter.com/key-value-database/) to [Serverless Workers](https://developer.puter.com/serverless-workers/), Puter has you covered. Puter also helps you get users! Once you build your app, you can publish it on our [App Store](https://apps.puter.com/) to reach and monetize users.
+Every answer includes:
+- ✅ Exact source file
+- ✅ Page number
+- ✅ Paragraph snippet
+- ✅ Confidence score
+- ✅ Highlighted evidence
+
+**Privacy First**
+
+- 🔒 All data stays on your machine
+- 🔒 Local AI processing with Ollama
+- 🔒 No cloud uploads
+- 🔒 Fully self-hosted
+- 🔒 Offline capable
 
 <br/>
 
-## Getting Started
+## ✨ Features
 
+### 🤖 Local AI Processing
+- Powered by **Ollama** (Llama 3, Mistral, Phi, DeepSeek)
+- 100% local inference
+- No API keys required
+- Works offline
+- Privacy guaranteed
 
-### 💻 Local Development
+### 📄 Document Intelligence
+- **Upload**: PDF, DOCX, TXT, Markdown, Email (.eml)
+- **Parse**: Automatic text extraction with OCR fallback
+- **Index**: Semantic embeddings for intelligent search
+- **Search**: Natural language queries across all documents
+- **Cite**: Every answer includes exact sources
+
+### 🔍 Advanced RAG Pipeline
+- Semantic search with vector embeddings
+- Hybrid retrieval (semantic + keyword)
+- Result reranking for accuracy
+- Context-aware answer generation
+- Anti-hallucination safeguards
+
+### 💬 Chat Interface
+- Streaming responses
+- Markdown rendering
+- Syntax highlighting
+- Expandable citations
+- Evidence cards
+- Confidence scoring
+
+### 🖥️ Desktop OS Experience
+- Window management system
+- File browser interface
+- Drag & drop uploads
+- Modern, responsive UI
+- Dark mode support
+- Glassmorphism design
+
+### 🛡️ Anti-Hallucination System
+- Confidence thresholds
+- Source verification
+- "I don't know" responses when uncertain
+- No fabricated citations
+- Retrieval quality checks
+
+<br/>
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** >= 24.0.0
+- **Python** >= 3.10
+- **Ollama** ([Install here](https://ollama.ai))
+
+### Quick Start
 
 ```bash
-git clone https://github.com/HeyPuter/puter
-cd puter
+# 1. Clone the repository
+git clone https://github.com/yourusername/smriti.git
+cd smriti
+
+# 2. Install dependencies
 npm install
+
+# 3. Install Python dependencies
+cd backend
+pip install -r requirements.txt
+
+# 4. Pull an Ollama model
+ollama pull mistral
+
+# 5. Start Smriti
 npm start
 ```
-**→** This should launch Puter at  http://puter.localhost:4100
 
+**→** This will launch Smriti at http://localhost:4100
 
-<br/>
-
-### 🚀 Self-Hosting
-
-#### Linux/macOS
+### Docker Setup
 
 ```bash
-curl -fsSL https://puter.com/selfhost | sh
+# One-command startup
+docker compose up
 ```
 
-#### Windows
+<br/>
 
-```powershell
-irm https://puter.com/selfhost?os=windows | iex
+## 📖 How It Works
+
+### 1. Document Ingestion
+```
+Upload Document → Parse Content → Extract Text → Chunk Intelligently
 ```
 
-**→** For more details, see [Self-Hosting Puter](./doc/self-hosting.md).
+### 2. Embedding Generation
+```
+Text Chunks → Local Embeddings (sentence-transformers) → ChromaDB Storage
+```
+
+### 3. Question Answering
+```
+User Question → Semantic Search → Retrieve Chunks → Rerank Results
+                                                          ↓
+Answer with Citations ← Generate Response ← Ollama LLM ← Context
+```
+
+### 4. Citation Extraction
+```
+Generated Answer → Extract Sources → Link to Original → Highlight Evidence
+```
 
 <br/>
 
-### ☁️ Puter.com
+## 🎨 Supported File Types
 
-Puter is available as a hosted service at [**puter.com**](https://puter.com).
-
-<br/>
-
-## Support
-
-Connect with the maintainers and community through these channels:
-
-- Bug report or feature request? Please [open an issue](https://github.com/HeyPuter/puter/issues/new/choose).
-- Discord: [discord.com/invite/PQcx7Teh8u](https://discord.com/invite/PQcx7Teh8u)
-- X (Twitter): [x.com/HeyPuter](https://x.com/HeyPuter)
-- Reddit: [reddit.com/r/puter/](https://www.reddit.com/r/puter/)
-- Mastodon: [mastodon.social/@puter](https://mastodon.social/@puter)
-- Security issues or abuse reports? [security@puter.com](mailto:security@puter.com)
-- Email maintainers at [hi@puter.com](mailto:hi@puter.com)
-
-We are always happy to help you with any questions you may have. Don't hesitate to ask!
+| Format | Support | OCR Fallback |
+|--------|---------|--------------|
+| PDF | ✅ | ✅ |
+| DOCX | ✅ | - |
+| TXT | ✅ | - |
+| Markdown | ✅ | - |
+| Email (.eml) | ✅ | - |
+| HTML | ✅ | - |
 
 <br/>
 
-## License
+## 🏗️ Architecture
 
-This repository, including all its contents, sub-projects, modules, and components, is licensed under [AGPL-3.0](https://github.com/HeyPuter/puter/blob/main/LICENSE.txt) unless explicitly stated otherwise. Third-party libraries included in this repository may be subject to their own licenses.
+### Frontend
+- **Base**: Puter's desktop OS framework
+- **UI**: Modern, responsive, window-based interface
+- **Features**: File management, chat interface, citation viewer
+
+### Backend
+- **Framework**: FastAPI (Python)
+- **Database**: SQLite (metadata) + ChromaDB (vectors)
+- **AI**: Ollama (local LLM inference)
+- **Embeddings**: sentence-transformers (local)
+- **RAG**: LangChain / LlamaIndex
+
+### Data Flow
+```
+┌─────────────┐
+│   Browser   │
+│  (Puter UI) │
+└──────┬──────┘
+       │
+       ↓
+┌─────────────┐
+│   FastAPI   │
+│   Backend   │
+└──────┬──────┘
+       │
+       ├──→ SQLite (metadata)
+       ├──→ ChromaDB (vectors)
+       └──→ Ollama (LLM)
+```
 
 <br/>
 
-## Translations
+## 🛠️ Configuration
 
-- [Arabic / العربية](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ar.md)
-- [Armenian / Հայերեն](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.hy.md)
-- [Bengali / বাংলা](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.bn.md)
-- [Chinese / 中文](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.zh.md)
-- [Danish / Dansk](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.da.md)
-- [English](https://github.com/HeyPuter/puter/blob/main/README.md)
-- [Farsi / فارسی](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.fa.md)
-- [Finnish / Suomi](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.fi.md)
-- [French / Français](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.fr.md)
-- [German /  Deutsch](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.de.md)
-- [Hebrew/ עברית](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.he.md)
-- [Hindi / हिंदी](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.hi.md)
-- [Hungarian / Magyar](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.hu.md)
-- [Indonesian / Bahasa Indonesia](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.id.md)
-- [Italian / Italiano](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.it.md)
-- [Japanese / 日本語](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.jp.md)
-- [Korean / 한국어](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ko.md)
-- [Malay / Bahasa Malaysia](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.my.md)
-- [Malayalam / മലയാളം](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ml.md)
-- [Polish / Polski](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.pl.md)
-- [Portuguese / Português](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.pt.md)
-- [Punjabi / ਪੰਜਾਬੀ](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.pa.md)
-- [Romanian / Română](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ro.md)
-- [Russian / Русский](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ru.md)
-- [Spanish / Español](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.es.md)
-- [Swedish / Svenska](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.sv.md)
-- [Tamil / தமிழ்](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ta.md)
-- [Telugu / తెలుగు](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.te.md)
-- [Thai / ไทย](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.th.md)
-- [Turkish / Türkçe](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.tr.md)
-- [Ukrainian / Українська](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ua.md)
-- [Urdu / اردو](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.ur.md)
-- [Vietnamese / Tiếng Việt](https://github.com/HeyPuter/puter/blob/main/doc/i18n/README.vi.md)
+### Environment Variables
+
+```bash
+# Backend (.env)
+DATABASE_URL=sqlite:///./data/smriti.db
+OLLAMA_BASE_URL=http://localhost:11434
+DEFAULT_MODEL=mistral
+EMBEDDING_MODEL=all-MiniLM-L6-v2
+CHUNK_SIZE=512
+CHUNK_OVERLAP=50
+```
+
+### Ollama Models
+
+```bash
+# Recommended models
+ollama pull mistral      # Balanced performance
+ollama pull llama3       # High quality
+ollama pull phi          # Fast, lightweight
+ollama pull deepseek     # Code-focused
+```
+
+<br/>
+
+## 📚 Documentation
+
+- [Installation Guide](./docs/installation.md)
+- [Architecture Overview](./docs/architecture.md)
+- [API Reference](./docs/api.md)
+- [Development Guide](./docs/development.md)
+- [Self-Hosting](./docs/self-hosting.md)
+
+<br/>
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+
+### Development Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start backend in dev mode
+cd backend
+python -m uvicorn app.main:app --reload
+
+# Start frontend in dev mode
+npm run dev
+```
+
+<br/>
+
+## 🔒 Security
+
+- All processing happens locally
+- No data leaves your machine
+- No telemetry or tracking
+- Open source and auditable
+- Self-hosted by default
+
+For security issues, please email: security@smriti.dev
+
+<br/>
+
+## 📄 License
+
+This project is licensed under [AGPL-3.0](./LICENSE.txt).
+
+Built on top of [Puter](https://github.com/HeyPuter/puter) - Desktop environment in the browser.
+
+<br/>
+
+## 🙏 Acknowledgments
+
+- **Puter** - For the amazing desktop OS framework
+- **Ollama** - For making local AI accessible
+- **ChromaDB** - For vector storage
+- **LangChain** - For RAG tooling
+- **FastAPI** - For the backend framework
+
+<br/>
+
+## 🌟 Why Smriti?
+
+### vs. ChatGPT
+- ✅ **Privacy**: Your documents never leave your machine
+- ✅ **Citations**: Every answer includes exact sources
+- ✅ **Offline**: Works without internet
+- ✅ **Free**: No API costs
+
+### vs. Notion AI
+- ✅ **Local**: No cloud dependency
+- ✅ **Open Source**: Fully auditable
+- ✅ **Self-Hosted**: You own your data
+- ✅ **Customizable**: Extend as needed
+
+### vs. Obsidian + AI Plugins
+- ✅ **Desktop OS**: Full window management
+- ✅ **RAG Pipeline**: Advanced retrieval
+- ✅ **Citations**: Built-in source tracking
+- ✅ **Multi-Format**: PDF, DOCX, and more
+
+<br/>
+
+## 🎯 Roadmap
+
+### v1.0 (Current)
+- [x] Fork Puter
+- [x] Rebrand to Smriti
+- [ ] FastAPI backend
+- [ ] Ollama integration
+- [ ] Document ingestion
+- [ ] RAG pipeline
+- [ ] Citation engine
+- [ ] UI integration
+
+### v1.1
+- [ ] Multi-language support
+- [ ] Advanced chunking strategies
+- [ ] Custom embedding models
+- [ ] Export functionality
+- [ ] Batch processing
+
+### v2.0
+- [ ] Multi-user workspaces
+- [ ] Collaborative annotations
+- [ ] Mobile app
+- [ ] Browser extension
+- [ ] Cloud sync (optional)
+
+<br/>
+
+## 💬 Community
+
+- **Discord**: [Join our server](#)
+- **Twitter**: [@SmritiAI](#)
+- **Reddit**: [r/smriti](#)
+- **Email**: hi@smriti.dev
+
+<br/>
+
+---
+
+<p align="center">
+  <strong>Smriti</strong> - Private AI for your documents
+  <br/>
+  Built with ❤️ for privacy and trust
+</p>
+
+<p align="center">
+  <a href="#-getting-started">Get Started</a> •
+  <a href="./docs">Documentation</a> •
+  <a href="./CONTRIBUTING.md">Contribute</a>
+</p>
