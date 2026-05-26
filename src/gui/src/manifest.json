@@ -1,45 +1,37 @@
 {
-    "name": "Puter",
-    "short_name": "Puter",
+    "name": "Smriti",
+    "short_name": "Smriti",
     "display": "standalone",
     "start_url": "/",
-    "id": "puter",
-    "description": "Personal Cloud Computer: All your files, apps, and games in one place accessible from anywhere at any time.",
+    "id": "smriti",
+    "description": "Private AI for your documents - Local-first AI knowledge operating system",
     "dir": "auto",
     "lang": "en",
     "orientation": "any",
     "scope": "/",
     "categories": [
         "productivity",
-        "entertainment",
-        "games",
-        "navigation",
-        "utilities"
+        "utilities",
+        "education"
     ],
     "shortcuts": [
         {
-            "name": "Notepad",
-            "short_name": "Notepad",
-            "description": "Cloud Notepad",
-            "url": "/app/editor"
+            "name": "Upload Document",
+            "short_name": "Upload",
+            "description": "Upload and index a document",
+            "url": "/upload"
         },
         {
-            "name": "Dev Center",
-            "short_name": "Dev Center",
-            "description": "Publish your apps and games on the Puter",
-            "url": "/app/dev-center"
+            "name": "Search Documents",
+            "short_name": "Search",
+            "description": "Search across your documents",
+            "url": "/search"
         },
         {
-            "name": "Camera",
-            "short_name": "Camera",
-            "description": "Take a picture or record a video",
-            "url": "/app/camera"
-        },
-        {
-            "name":"Recorder",
-            "short_name":"Recorder",
-            "description":"Record audio notes and voice memos", 
-            "url":"/app/recorder"
+            "name": "AI Chat",
+            "short_name": "Chat",
+            "description": "Ask questions about your documents",
+            "url": "/chat"
         }
     ],
     "icons": [
@@ -80,6 +72,6 @@
             "density": "4.0"
         }
     ],
-    "theme_color": "#000000",
-    "background_color": "#000000"
+    "theme_color": "#1E3A8A",
+    "background_color": "#0F172A"
 }
