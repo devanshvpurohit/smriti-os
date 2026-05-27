@@ -23,7 +23,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { PuterService } from '../types.js';
 import type { UserRow } from '../../stores/user/UserStore.js';
 import { generateDefaultFsentries } from '../../util/userProvisioning.js';
-import type { AppIconService } from '../appIcon/AppIconService.js';
+// import type { AppIconService } from '../appIcon/AppIconService.js'; // Removed for Smriti
 
 const USERNAME = 'admin';
 const ADMIN_GROUP_UID = 'ca342a5e-b13d-4dee-9048-58b11a57cc55';
@@ -50,13 +50,10 @@ export class DefaultUserService extends PuterService {
         if (!user) {
             tmpPassword = crypto.randomBytes(4).toString('hex');
             user = await this.#createAdminUser(tmpPassword);
-            // AppIconService is registered before us, so its own onServerStart
-            // bailed on its first-boot bootstrap (admin didn't exist yet).
-            // Poke it here so the `/system/app_icons/` dir + subdomain exist
-            // by the time the first icon arrives.
-            await (
-                this.services.appIcon as AppIconService
-            ).ensureIconsDirectory();
+            // AppIconService removed for Smriti - no app icons needed
+            // await (
+            //     this.services.appIcon as AppIconService
+            // ).ensureIconsDirectory();
         } else {
             const metadata = (user.metadata ?? {}) as Record<string, unknown>;
             const stashed = metadata.tmp_password;
