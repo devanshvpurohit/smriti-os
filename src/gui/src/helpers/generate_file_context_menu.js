@@ -19,11 +19,9 @@
 
 import UIAlert from '../UI/UIAlert.js';
 
-import UIWindowPublishWebsite from '../UI/UIWindowPublishWebsite.js';
 import UIWindowItemProperties from '../UI/UIWindowItemProperties.js';
 import UIWindowSaveAccount from '../UI/UIWindowSaveAccount.js';
 import UIWindowEmailConfirmationRequired from '../UI/UIWindowEmailConfirmationRequired.js';
-import UIWindowPublishWorker from '../UI/UIWindowPublishWorker.js';
 import open_item from './open_item.js';
 import launch_app from './launch_app.js';
 import path from '../lib/path.js';
@@ -241,7 +239,7 @@ const generate_file_context_menu = async function (options) {
                         return;
                     }
                 }
-                UIWindowPublishWebsite(fsentry.uid, $(el_item).attr('data-name'), $(el_item).attr('data-path'));
+                // UIWindowPublishWebsite removed
             },
         });
     }
@@ -269,32 +267,12 @@ const generate_file_context_menu = async function (options) {
                     return;
                 }
 
-                UIWindowPublishWorker(fsentry.uid, $(el_item).attr('data-name'), $(el_item).attr('data-path'));
+                // UIWindowPublishWorker removed
             },
         });
     }
 
-    // -------------------------------------------
-    // Deploy As App
-    // -------------------------------------------
-    if ( !is_trashed && !is_trash && fsentry.is_dir ) {
-        menu_items.push({
-            html: i18n('deploy_as_app'),
-            disabled: !fsentry.is_dir,
-            onClick: async function () {
-                launch_app({
-                    name: 'dev-center',
-                    file_path: $(el_item).attr('data-path'),
-                    file_uid: $(el_item).attr('data-uid'),
-                    params: {
-                        source_path: fsentry.path,
-                    },
-                });
-            },
-        });
-
-        menu_items.push('-');
-    }
+    // deploy_as_app removed
 
     // -------------------------------------------
     // Empty Trash

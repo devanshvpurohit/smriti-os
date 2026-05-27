@@ -63,7 +63,7 @@ class Settings(BaseSettings):
     
     # CORS
     cors_origins: List[str] = Field(
-        default=["http://localhost:4100", "http://puter.localhost:4100"],
+        default_factory=lambda: ["http://localhost:4100", "http://puter.localhost:4100"],
         env="CORS_ORIGINS"
     )
     

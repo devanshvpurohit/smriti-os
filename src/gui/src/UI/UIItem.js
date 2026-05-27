@@ -17,14 +17,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import UIWindowPublishWebsite from './UIWindowPublishWebsite.js';
 import UIWindowItemProperties from './UIWindowItemProperties.js';
 import UIWindowSaveAccount from './UIWindowSaveAccount.js';
 import UIPopover from './UIPopover.js';
 import UIWindowEmailConfirmationRequired from './UIWindowEmailConfirmationRequired.js';
 import UIContextMenu from './UIContextMenu.js';
 import UIAlert from './UIAlert.js';
-import UIWindowPublishWorker from './UIWindowPublishWorker.js';
 import path from '../lib/path.js';
 import truncate_filename from '../helpers/truncate_filename.js';
 import launch_app from '../helpers/launch_app.js';
@@ -1305,10 +1303,9 @@ async function UIItem (options) {
                                 return;
                             }
                         }
-                        UIWindowPublishWebsite(options.uid, $(el_item).attr('data-name'), $(el_item).attr('data-path'));
+                        // UIWindowPublishWebsite removed
                     },
                 });
-
             }
             //-------------------------------------------
             // Publish as Worker
@@ -1334,31 +1331,11 @@ async function UIItem (options) {
                             return;
                         }
 
-                        UIWindowPublishWorker(options.uid, $(el_item).attr('data-name'), $(el_item).attr('data-path'));
+                        // UIWindowPublishWorker removed
                     },
                 });
             }
-            // -------------------------------------------
-            // Deploy As App
-            // -------------------------------------------
-            if ( !is_trashed && !is_trash && options.is_dir ) {
-                menu_items.push({
-                    html: i18n('deploy_as_app'),
-                    disabled: !options.is_dir,
-                    onClick: async function () {
-                        launch_app({
-                            name: 'dev-center',
-                            file_path: $(el_item).attr('data-path'),
-                            file_uid: $(el_item).attr('data-uid'),
-                            params: {
-                                source_path: options.path,
-                            },
-                        });
-                    },
-                });
-
-                menu_items.push('-');
-            }
+            // deploy_as_app removed
             // -------------------------------------------
             // Empty Trash
             // -------------------------------------------

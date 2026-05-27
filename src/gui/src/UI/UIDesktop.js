@@ -25,10 +25,7 @@ import UIAlert from './UIAlert.js';
 import UIWindow from './UIWindow.js';
 import UIWindowSaveAccount from './UIWindowSaveAccount.js';
 import UIWindowDesktopBGSettings from './UIWindowDesktopBGSettings.js';
-import UIWindowMyWebsites from './UIWindowMyWebsites.js';
-import UIWindowFeedback from './UIWindowFeedback.js';
 import UIWindowLogin from './UIWindowLogin.js';
-import UIWindowQR from './UIWindowQR.js';
 
 import UIWindowProgress from './UIWindowProgress.js';
 import UITaskbar from './UITaskbar.js';
@@ -1059,18 +1056,7 @@ async function UIDesktop (options) {
         // home directory
         puter.fs.readdir({ path: window.home_path, consistency: 'strong' });
 
-        // Show welcome window if user hasn't already seen it and hasn't directly navigated to an app
-        if ( !window.url_paths[0]?.toLocaleLowerCase() === 'app' || !window.url_paths[1] ) {
-            if ( !isMobile.phone && !isMobile.tablet ) {
-                setTimeout(() => {
-                    puter.kv.get('has_seen_welcome_window').then(async (val) => {
-                        if ( val === null ) {
-                            await UIWindowWelcome();
-                        }
-                    });
-                }, 1000);
-            }
-        }
+        // UIWindowWelcome logic removed
     }
 
     // -------------------------------------------
@@ -2011,12 +1997,7 @@ $(document).on('contextmenu taphold', '.toolbar', function (event) {
     return false;
 });
 
-$(document).on('click', '.qr-btn', async function (e) {
-    UIWindowQR({
-        message_i18n_key: 'scan_qr_c2a',
-        text: `${window.gui_origin }?auth_token=${ window.auth_token}`,
-    });
-});
+// qr-btn click handler removed
 
 $(document).on('click', '.user-options-menu-btn', async function (e) {
     const pos = this.getBoundingClientRect();
@@ -2134,16 +2115,6 @@ $(document).on('click', '.user-options-menu-btn', async function (e) {
                 },
             },
             //--------------------------------------------------
-            // My Websites
-            //--------------------------------------------------
-            {
-                html: i18n('my_websites'),
-                id: 'my_websites',
-                onClick: async function () {
-                    UIWindowMyWebsites();
-                },
-            },
-            //--------------------------------------------------
             // Task Manager
             //--------------------------------------------------
             {
@@ -2151,16 +2122,6 @@ $(document).on('click', '.user-options-menu-btn', async function (e) {
                 id: 'task_manager',
                 onClick: async function () {
                     UIWindowTaskManager();
-                },
-            },
-            //--------------------------------------------------
-            // Contact Us
-            //--------------------------------------------------
-            {
-                html: i18n('contact_us'),
-                id: 'contact_us',
-                onClick: async function () {
-                    UIWindowFeedback();
                 },
             },
             // -------------------------------------------

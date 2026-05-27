@@ -22,7 +22,6 @@ import UIContextMenu from './UIContextMenu.js';
 import path from '../lib/path.js';
 import UITaskbarItem from './UITaskbarItem.js';
 import UIWindowLogin from './UIWindowLogin.js';
-import UIWindowPublishWebsite from './UIWindowPublishWebsite.js';
 import UIWindowItemProperties from './UIWindowItemProperties.js';
 import new_context_menu_item from '../helpers/new_context_menu_item.js';
 import refresh_item_container from '../helpers/refresh_item_container.js';
@@ -2516,26 +2515,10 @@ async function UIWindow (options) {
                                     return;
                                 }
                             }
-                            UIWindowPublishWebsite($(el_window).attr('data-uid'), $(el_window).attr('data-name'), $(el_window).attr('data-path'));
+                            // UIWindowPublishWebsite removed
                         },
                     });
-                    // -------------------------------------------
-                    // Deploy as App
-                    // -------------------------------------------
-                    menu_items.push({
-                        html: i18n('deploy_as_app'),
-                        disabled: !options.is_dir,
-                        onClick: async function () {
-                            launch_app({
-                                name: 'dev-center',
-                                file_path: $(el_window).attr('data-path'),
-                                file_uid: $(el_window).attr('data-uid'),
-                                params: {
-                                    source_path: $(el_window).attr('data-path'),
-                                },
-                            });
-                        },
-                    });
+                    // deploy_as_app removed
                     // -------------------------------------------
                     // -
                     // -------------------------------------------

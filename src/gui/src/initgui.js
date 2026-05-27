@@ -17,21 +17,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import UIDashboard from './UI/Dashboard/UIDashboard.js';
 import UIAlert from './UI/UIAlert.js';
 import UIComponentWindow from './UI/UIComponentWindow.js';
 import UIDesktop from './UI/UIDesktop.js';
 import UIWindow from './UI/UIWindow.js';
-import UIWindowAuthMe from './UI/UIWindowAuthMe.js';
 import UIWindowChangeUsername from './UI/UIWindowChangeUsername.js';
-import UIWindowCopyToken from './UI/UIWindowCopyToken.js';
 import UIWindowEmailConfirmationRequired from './UI/UIWindowEmailConfirmationRequired.js';
 import UIWindowLogin from './UI/UIWindowLogin.js';
 import UIWindowLoginInProgress from './UI/UIWindowLoginInProgress.js';
 import UIWindowNewPassword from './UI/UIWindowNewPassword.js';
 import UIWindowRequestPermission from './UI/UIWindowRequestPermission.js';
 import UIWindowSaveAccount from './UI/UIWindowSaveAccount.js';
-import UIWindowSessionList from './UI/UIWindowSessionList.js';
 import UIWindowSignup from './UI/UIWindowSignup.js';
 import UIWindowRecoverPassword from './UI/UIWindowRecoverPassword.js';
 import { PROCESS_RUNNING } from './definitions.js';
@@ -475,12 +471,7 @@ window.initgui = async function (options) {
                 await window.getUserAppToken(window.openerOrigin);
             } else {
                 // Show session list so user can pick which account to use
-                picked_a_user_for_sdk_login = await UIWindowSessionList({
-                    reload_on_success: false,
-                    draggable_body: false,
-                    has_head: false,
-                    cover_page: true,
-                });
+                picked_a_user_for_sdk_login = false;
 
                 if ( picked_a_user_for_sdk_login ) {
                     await window.getUserAppToken(window.openerOrigin);
@@ -623,12 +614,7 @@ window.initgui = async function (options) {
         window.userAppToken = response.token;
 
         if ( !picked_a_user_for_sdk_login && window.logged_in_users.length > 1 && (!window.userAppToken || window.url_query_params.get('request_auth') ) ) {
-            picked_a_user_for_sdk_login = await UIWindowSessionList({
-                reload_on_success: false,
-                draggable_body: false,
-                has_head: false,
-                cover_page: true,
-            });
+            picked_a_user_for_sdk_login = false;
         }
     }
     // -------------------------------------------------------------------------------------
@@ -843,30 +829,7 @@ window.initgui = async function (options) {
             }
             await window.update_auth_data(whoami.token || window.auth_token, whoami);
 
-            // -------------------------------------------------------------------------------------
-            // Action: AuthMe — redirect to a third-party URL with the user's auth token
-            // -------------------------------------------------------------------------------------
-            if ( action === 'authme' ) {
-                const redirectURL = window.url_query_params.get('redirectURL');
-                if ( redirectURL ) {
-                    const approved = await UIWindowAuthMe({
-                        redirect_url: redirectURL,
-                    });
-                    if ( approved ) {
-                        const url = new URL(redirectURL);
-                        url.searchParams.set('token', window.auth_token);
-                        window.location.href = url.href;
-                        return;
-                    }
-                }
-            }
-
-            // -------------------------------------------------------------------------------------
-            // Action: CopyAuth — show dialog to copy auth token
-            // -------------------------------------------------------------------------------------
-            if ( action === 'copyauth' ) {
-                await UIWindowCopyToken({ show_header: true });
-            }
+            // authme and copyauth actions removed
 
             // -------------------------------------------------------------------------------------
             // Load desktop, only if we're not embedded in a popup and not on the dashboard page
@@ -886,7 +849,8 @@ window.initgui = async function (options) {
             // Dashboard mode
             // -------------------------------------------------------------------------------------
             else if ( window.is_dashboard_mode ) {
-                UIDashboard();
+                // UIDashboard removed
+                UIDesktop({});
             }
             // -------------------------------------------------------------------------------------
             // If embedded in a popup, send the token to the opener and close the popup
@@ -1158,9 +1122,7 @@ window.initgui = async function (options) {
         const needs_action = action === 'authme' || action === 'copyauth';
         const reload_on_success = needs_action;
         if ( window.logged_in_users.length > 0 ) {
-            await UIWindowSessionList({
-                redirect_url: needs_action ? window.location.href : undefined,
-            });
+            // UIWindowSessionList removed
         }
         else {
             const resp = await fetch(`${window.gui_origin }/whoarewe`);
@@ -1400,30 +1362,7 @@ window.initgui = async function (options) {
         // close all windows
         $('.window').close();
 
-        // -------------------------------------------------------------------------------------
-        // Action: AuthMe — redirect to a third-party URL with the user's auth token
-        // -------------------------------------------------------------------------------------
-        if ( action === 'authme' ) {
-            const redirectURL = window.url_query_params.get('redirectURL');
-            if ( redirectURL ) {
-                const approved = await UIWindowAuthMe({
-                    redirect_url: redirectURL,
-                });
-                if ( approved ) {
-                    const url = new URL(redirectURL);
-                    url.searchParams.set('token', window.auth_token);
-                    window.location.href = url.href;
-                    return;
-                }
-            }
-        }
-
-        // -------------------------------------------------------------------------------------
-        // Action: CopyAuth — show dialog to copy auth token
-        // -------------------------------------------------------------------------------------
-        if ( action === 'copyauth' ) {
-            await UIWindowCopyToken({ show_header: true });
-        }
+        // authme and copyauth actions removed
 
         // -------------------------------------------------------------------------------------
         // Early check for fullpage mode from app metadata (after login)
@@ -1459,7 +1398,8 @@ window.initgui = async function (options) {
         // Dashboard mode: open explorer pointing to home directory
         // -------------------------------------------------------------------------------------
         else if ( window.is_dashboard_mode ) {
-            UIDashboard();
+            // UIDashboard removed
+            UIDesktop({});
         }
         // -------------------------------------------------------------------------------------
         // If embedded in a popup, send the 'ready' event to referrer and close the popup
