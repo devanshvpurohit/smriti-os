@@ -18,23 +18,23 @@
  */
 
 import { ACLService } from './acl/ACLService';
-import { AppPermissionService } from './apps/AppPermissionService';
-import { RecommendedAppsService } from './apps/RecommendedAppsService';
-import { SuggestedAppsService } from './apps/SuggestedAppsService';
+// import { AppPermissionService } from './apps/AppPermissionService'; // Removed for Smriti
+// import { RecommendedAppsService } from './apps/RecommendedAppsService'; // Removed for Smriti
+// import { SuggestedAppsService } from './apps/SuggestedAppsService'; // Removed for Smriti
 import { AuthService } from './auth/AuthService';
 import { BroadcastService } from './broadcast/BroadcastService';
 import { NotificationService } from './notification/NotificationService';
-import { AppIconService } from './appIcon/AppIconService';
+// import { AppIconService } from './appIcon/AppIconService'; // Removed for Smriti
 import { DefaultUserService } from './selfhosted/DefaultUserService';
-import { PuterHomepageService } from './homepage/PuterHomepageService';
+// import { PuterHomepageService } from './homepage/PuterHomepageService'; // Removed for Smriti
 import { OIDCService } from './auth/OIDCService';
 import { TokenService } from './auth/TokenService';
 import { FSService } from './fs/FSService';
-import { MeteringService } from './metering/MeteringService';
+// import { MeteringService } from './metering/MeteringService'; // Removed for Smriti
 import { PermissionService } from './permission/PermissionService';
 import { ServerHealthService } from './health/ServerHealthService';
 import { SocketService } from './socket/SocketService';
-import { SubdomainPermissionService } from './subdomain/SubdomainPermissionService';
+// import { SubdomainPermissionService } from './subdomain/SubdomainPermissionService'; // Removed for Smriti
 import type { IPuterServiceRegistry } from './types';
 
 /**
@@ -46,23 +46,23 @@ import type { IPuterServiceRegistry } from './types';
  */
 declare module './types' {
     interface IPuterServiceInstances {
-        metering: MeteringService;
+        // metering: MeteringService; // Removed for Smriti
         permission: PermissionService;
         acl: ACLService;
         token: TokenService;
         auth: AuthService;
         fs: FSService;
-        appPermission: AppPermissionService;
-        subdomainPermission: SubdomainPermissionService;
-        recommendedApps: RecommendedAppsService;
-        suggestedApps: SuggestedAppsService;
+        // appPermission: AppPermissionService; // Removed for Smriti
+        // subdomainPermission: SubdomainPermissionService; // Removed for Smriti
+        // recommendedApps: RecommendedAppsService; // Removed for Smriti
+        // suggestedApps: SuggestedAppsService; // Removed for Smriti
         socket: SocketService;
         notification: NotificationService;
         broadcast: BroadcastService;
         oidc: OIDCService;
-        appIcon: AppIconService;
+        // appIcon: AppIconService; // Removed for Smriti
         defaultUser: DefaultUserService;
-        homepage: PuterHomepageService;
+        // homepage: PuterHomepageService; // Removed for Smriti
         health: ServerHealthService;
     }
 }
@@ -76,7 +76,7 @@ declare module './types' {
 // NotificationService depends on notification store (for DB) + event client (for socket push).
 // BroadcastService is independent — only needs the event client.
 export const puterServices = {
-    metering: MeteringService,
+    // metering: MeteringService, // Removed for Smriti
     permission: PermissionService,
     acl: ACLService,
     token: TokenService,
@@ -86,17 +86,17 @@ export const puterServices = {
     // rewriters/implicators only; no runtime state. Placed after fsEntry so
     // the FS rewriter runs first for `fs:/path` → `fs:<uuid>` before any
     // downstream check that might chain app-root-dir → fs.
-    appPermission: AppPermissionService,
-    subdomainPermission: SubdomainPermissionService,
-    recommendedApps: RecommendedAppsService,
-    suggestedApps: SuggestedAppsService,
+    // appPermission: AppPermissionService, // Removed for Smriti
+    // subdomainPermission: SubdomainPermissionService, // Removed for Smriti
+    // recommendedApps: RecommendedAppsService, // Removed for Smriti
+    // suggestedApps: SuggestedAppsService, // Removed for Smriti
     socket: SocketService,
     notification: NotificationService,
     broadcast: BroadcastService,
     oidc: OIDCService,
-    appIcon: AppIconService,
+    // appIcon: AppIconService, // Removed for Smriti
     defaultUser: DefaultUserService,
-    homepage: PuterHomepageService,
+    // homepage: PuterHomepageService, // Removed for Smriti
     // Health comes after socket so its default `socket-initialized`
     // check can reference the peer.
     health: ServerHealthService,
